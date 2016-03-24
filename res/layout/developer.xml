@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Меня зовут Николай Орёл, и я создал это приложение."
+		android:id="@+id/textView10"
+		/>
+
+	<ImageView
+		android:layout_width="215dp"
+		android:layout_height="223dp"
+		android:id="@+id/imageView2"
+		android:src="@drawable/image_dev"
+		/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Я вконтакте : http://vk.com/haker_developer"
+		android:id="@+id/textView2"
+		android:autoLink="web"
+		android:linksClickable="true"
+		android:textSize="14dp"
+		/>
+
+	<TextView
+		android:layout_width="275dp"
+		android:layout_height="wrap_content"
+		android:autoLink="web"
+		android:text="Если есть вопросы, пишите в паблик: http://vk.com/public94861467"
+		android:id="@+id/textView3"
+		/>
+
+	<Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Назад"
+		android:id="@+id/button7"
+		android:onClick="Back"
+		/>
+
+</LinearLayout>
