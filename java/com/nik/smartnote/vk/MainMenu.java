@@ -8,15 +8,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.nik.smartnote.vk.Model.User;
@@ -124,7 +120,7 @@ Intent intent = new Intent(MainMenu.this, FightActivity.class);
                         startActivity(new Intent(MainMenu.this, AchievementsActivity.class));
                         break;
                     case 6:
-                        startActivity(new Intent(MainMenu.this,AttakFriendActivity.class));
+                        startActivity(new Intent(MainMenu.this,EventFriendActivity.class));
                         break;
 
                 }

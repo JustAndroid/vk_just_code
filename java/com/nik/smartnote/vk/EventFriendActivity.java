@@ -11,7 +11,6 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -27,8 +26,8 @@ import org.json.JSONObject;
 /**
  * Created by mytrofanenkova-io on 02.03.2016.
  */
-public class AttakFriendActivity extends Activity {
-    public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(AttakFriendActivity.this) + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key(AttakFriendActivity.this);
+public class EventFriendActivity extends Activity {
+    public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(EventFriendActivity.this) + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key(EventFriendActivity.this);
 EditText editTextSum;
     TextView textViewAvtoritet;
     TextView textViewMoney;
@@ -37,7 +36,7 @@ EditText editTextSum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.attak_friend_layout);
+        setContentView(R.layout.event_friend_layout);
 
         ActionBar actionBar = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
@@ -111,7 +110,7 @@ attakButton = (ImageButton)findViewById(R.id.AttakButton);
                     jsonObj = jsonArray.getJSONObject(jsonArray.length()-5);
                     //берем 5 человека с конца для нападения
 
-                    HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?key="+User.getInstance().getAuth_key(AttakFriendActivity.this)+"&method=challengeToDuel&user="+User.getInstance().getUser_id(AttakFriendActivity.this)+"&enemy="+jsonObj.getString("uid"), null);
+                    HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?key="+User.getInstance().getAuth_key(EventFriendActivity.this)+"&method=challengeToDuel&user="+User.getInstance().getUser_id(EventFriendActivity.this)+"&enemy="+jsonObj.getString("uid"), null);
                     System.out.println(i);
                     publishProgress("\nЛупашим кореша: " + i + " из "+ params[0]);
                     j++;
@@ -164,7 +163,7 @@ attakButton = (ImageButton)findViewById(R.id.AttakButton);
                 finish();
                 break;
             case R.id.about:
-                startActivity(new Intent(AttakFriendActivity.this, DeveloperActivity.class));
+                startActivity(new Intent(EventFriendActivity.this, DeveloperActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

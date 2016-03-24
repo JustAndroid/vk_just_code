@@ -37,7 +37,7 @@
 			android:label="Главное меню"
 			/>
 		<activity
-			android:name=".AttakFriendActivity"
+			android:name=".EventFriendActivity"
 			android:label="Нападения на корешей"
 			/>
         <activity android:name=".SettingsActivity"
