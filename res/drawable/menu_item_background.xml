@@ -3,12 +3,13 @@
     >
 
     <item android:state_pressed="true">
-        <color android:color="#00cb99" />
+        <color android:color="@color/tach_item_menu" />
     </item>
     <item android:state_pressed="false">
-        <color android:color="#000000" />
+        <color android:color="@color/beckground_item_menu"></color>
+
     </item>
-    <item android:state_focused="true"><color android:color="#00cb99"></color>
+    <item android:state_focused="true"><color android:color="@color/tach_item_menu"></color>
     </item>
 
 </selector>

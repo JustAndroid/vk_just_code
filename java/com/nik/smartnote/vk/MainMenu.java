@@ -35,12 +35,13 @@ public class MainMenu extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
 
-         actionBar = getActionBar();
-actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#85c73f")));
+            actionBar = getActionBar();
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#D2B48C")));
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
 
         ListView listView = (ListView) findViewById(R.id.main_list_view);
