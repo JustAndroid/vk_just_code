@@ -58,10 +58,13 @@ public class PrissonManager {
         return -1;
     }
 
-   public void kickBoss(Context context, int id){
+
+
+
+   public void kickBoss(Context context, int id,int idWeapon){
 
         HTTPHelper.getInstance().requestGet(
-                "http://109.234.156.252/prison/universal.php?method=hitBoss&spell_id=7&key=" + User.getInstance().getAuth_key(context) + "&amount=1&boss_id="
+                "http://109.234.156.252/prison/universal.php?method=hitBoss&spell_id="+idWeapon+"&key=" + User.getInstance().getAuth_key(context) + "&amount=1&boss_id="
                         + id + "&user=" + User.getInstance().getUser_id(context),
                 null
         );

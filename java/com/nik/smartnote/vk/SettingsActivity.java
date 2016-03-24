@@ -49,9 +49,15 @@ public class SettingsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_layout);
 
-       ActionBar actionBar = getActionBar();
+        ActionBar actionBar = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar = getActionBar();
+
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+            }
+        }
 
 
         ProgressDialog mProgressDialog = new ProgressDialog(SettingsActivity.this);
@@ -181,6 +187,7 @@ public class SettingsActivity extends Activity {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
+
                         try {
                             APIFunctions.Friends.delete(Integer.parseInt(jsonArray.getString(i)),SettingsActivity.this);
                             String text = jsonArray.getString(i);

@@ -57,11 +57,10 @@ textViewLifeBoss = (TextView)findViewById(R.id.life_boss);
         String helFull = intent.getStringExtra("helFull");
         if(helFull != null) {
             String nowHel = intent.getStringExtra("nowHel");
+
              idBoss = Integer.parseInt(intent.getStringExtra("idBoss"));
 
-
             imageViewBoss.setImageResource(PrissonManager.BOSSES[idBoss][2]);
-
             progressBarLifeBoss.setMax(Integer.parseInt(helFull));
             progressBarLifeBoss.setProgress(Integer.parseInt(nowHel));
             textViewLifeBoss.setText("Всего: " + helFull+ "\nОсталось: " + nowHel);
@@ -109,9 +108,11 @@ public void refresh(View v) {
 
             if (helFull != null) {
                 String nowHel = xmlParser.parsXMLTeg(xmlRezult, "h_now");
+
                 idBoss = Integer.parseInt(xmlParser.parsXMLTeg(xmlRezult, "id"));
              int idxBoss = new PrissonManager().getBoss(idBoss);
                 System.out.println(idBoss);
+
                 progressBarLifeBoss.setMax(Integer.parseInt(helFull));
                 progressBarLifeBoss.setProgress(Integer.parseInt(nowHel));
                 imageViewBoss.setImageResource(PrissonManager.BOSSES[idxBoss][2]);
@@ -144,6 +145,13 @@ public void refresh(View v) {
 
 
    public void onVPah(View v){
-        new PrissonManager().kickBoss(FightActivity.this, idBoss);
+
+        new PrissonManager().kickBoss(FightActivity.this, idBoss,7);
+
+
+     }
+   public void onPyrom(View v){
+       // new PrissonManager().kickBoss(FightActivity.this, idBoss,);
+
      }
 }

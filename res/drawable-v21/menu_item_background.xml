@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#f7e25b"
+    android:color="@color/tach_item_menu"
     >
 
-    <item android:state_focused="true"><color android:color="#e6ce87"></color>
+
+    <item android:state_focused="true"><color android:color="@color/tach_item_menu"></color></item>
+
+    <item android:state_focused="true"><color android:color="@color/beckground_item_menu"></color>
+
     </item>
 
 </ripple>
