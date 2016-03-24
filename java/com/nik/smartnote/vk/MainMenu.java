@@ -154,7 +154,7 @@ Intent intent = new Intent(MainMenu.this, FightActivity.class);
                 break;
             case R.id.about:
                 startActivity(new Intent(MainMenu.this, DeveloperActivity.class));
-                new User().clear();
+
         }
         return super.onOptionsItemSelected(item);
     }

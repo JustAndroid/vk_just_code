@@ -9,7 +9,7 @@
 	<color name="log_background">#a0afce</color>
 
 
-	<color name="beckground_item_menu">#fd5e5e5e</color>
+	<color name="beckground_item_menu">#fd2f2f31</color>
 	<color name="tach_item_menu">#fd54495e</color>
 
 </resources>
