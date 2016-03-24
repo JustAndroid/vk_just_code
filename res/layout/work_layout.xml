@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+       >
+
+<Spinner
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:id="@+id/spinnerTupePR"
+    ></Spinner>
+
+        <TextView
+            android:id="@+id/textView112"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Номер группы"
+            android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/editTextIdPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:inputType="number" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Номер поста группы &quot;Пиар&quot;:" />
+
+        <EditText
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/editTextIdPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:enabled="false"
+            android:ems="10"
+            android:inputType="number" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Каждые:"
+
+
+            />
+
+        <EditText
+            android:id="@+id/editTextTimeSleep"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+
+
+            android:inputType="number"
+            android:maxLength="2"
+            android:text="4" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="минут."
+
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Введите комментарий:"
+
+            />
+
+        <EditText
+            android:id="@+id/editTextComment"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/imageButtonAddPublic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClServiceGo"
+            android:text="Запустить сервис"
+android:layout_gravity="center"
+
+            />
+
+        <Button
+            android:id="@+id/imageButtonServiceGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:onClick="onClStopService"
+android:layout_gravity="center"
+            android:text="остановить сервис"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
+

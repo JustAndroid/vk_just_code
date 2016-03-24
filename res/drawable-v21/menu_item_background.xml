@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#f7e25b"
+    >
+
+    <item android:state_focused="true"><color android:color="#e6ce87"></color>
+    </item>
+
+</ripple>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вставить с буффера обмена"
+        android:onClick="pasteText"/>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Ссылка на кореша:"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextURL"
+        android:layout_weight="1"/>
+    <ImageButton
+android:id="@+id/serchfriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_action_arrow_right"
+        android:onClick="CheckFriend"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textViewNameVK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ф.И."/>
+        <TextView
+            android:id="@+id/textViewKlichka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Кличка"/>
+        <TextView
+            android:id="@+id/textViewAvtoritet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Авторитет"/>
+        <TextView
+            android:id="@+id/textViewTalants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Talanty"/>
+        <TextView
+            android:id="@+id/textViewBoroda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Boroda"/>
+        <TextView
+            android:id="@+id/textViewMaxUron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uron"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Боссы"
+            android:textSize="9pt"
+            android:textColor="#63a35e"/>
+        <TextView
+            android:id="@+id/TextKirpich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Кирпич:"/>
+        <TextView
+            android:id="@+id/textSizyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Сизый:"/>
+        <TextView
+            android:id="@+id/textMahno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Махно:"/>
+        <TextView
+            android:id="@+id/textLutyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Лютий:"/>
+        <TextView
+            android:id="@+id/textShaiba"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Шайба:"/>
+
+ </LinearLayout>
+
+</LinearLayout>

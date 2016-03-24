@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выберите параметры для удаления, или добавления с подписчиков:"
+
+        android:gravity="center_horizontal"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Если играет в Тюрягу:"
+            android:id="@+id/prissonSwitch"
+            android:paddingLeft="15dp"
+            tools:targetApi="ice_cream_sandwich" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Удаленный или забаненный:"
+            android:id="@+id/deleteFriendsSwitch"
+            android:paddingLeft="15dp"
+            tools:targetApi="ice_cream_sandwich"
+            />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="По авторитету:"
+        android:id="@+id/avtoritetSwitch"
+        android:paddingLeft="15dp"
+        tools:targetApi="ice_cream_sandwich"
+
+        android:enabled="false"
+        />
+    <EditText
+        android:id="@+id/avtoritetTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0"
+
+        android:enabled="false"
+
+         />
+
+</LinearLayout><LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="По талантах:"
+        android:id="@+id/talantsSwitch"
+        android:paddingLeft="15dp"
+        tools:targetApi="ice_cream_sandwich"
+        android:enabled="false"/>
+    <EditText
+        android:id="@+id/talantsTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="0"
+        android:enabled="false"
+        />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="По достигнутому урону:"
+            android:id="@+id/uronSwitch"
+            android:paddingLeft="15dp"
+            tools:targetApi="ice_cream_sandwich"
+            android:enabled="false"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerMaxUron"
+
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+<Button
+    android:onClick="onCheckFriends"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Проверить друзей"
+    android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:onClick="onCheckSubscriber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Проверить подписчиков"
+        android:layout_gravity="center_horizontal"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Логи:"
+    />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4e86ff">
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fcfaff"
+        android:text="Status..."
+        android:autoLink="web"
+        android:linksClickable="true"/>
+    </ScrollView>
+
+</RelativeLayout>
+
+</LinearLayout>

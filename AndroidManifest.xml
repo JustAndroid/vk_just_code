@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.nik.smartnote.vk"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:versionCode="7"
+	android:versionName="l.1.4"
+
+	>
+
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
+	<application
+
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<service
+			android:name=".service.PostService"
+			android:enabled="true"
+			android:exported="true" />
+<service android:name=".service.HTTPService"
+	android:enabled="true"
+	android:exported="true"/>
+
+		<activity
+			android:name=".DeveloperActivity"
+			android:label="О разработчике"
+            />
+		<activity
+			android:name=".AchievementsActivity"
+			android:label="Проверка пользователя"
+			/>
+		<activity
+			android:name=".MainMenu"
+			android:label="Главное меню"
+			/>
+		<activity
+			android:name=".AttakFriendActivity"
+			android:label="Нападения на корешей"
+			/>
+        <activity android:name=".SettingsActivity"
+            android:label="Дополнительные функции"/>
+		<activity android:name=".BossMenuActivity"
+            android:label="Список боссов"/>
+		<activity android:name=".FightActivity"
+            android:label="Бой с боссом"/>
+
+		<activity
+			android:name=".util.WorkActivity" />
+<activity android:name=".CleanFriendsActivity"
+
+	android:label="Чистка корешей"
+	android:screenOrientation="portrait"
+	/>
+		<activity
+			android:name=".MainActivity"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<receiver
+			android:name=".util.ServiceStartReceiver"
+			android:enabled="true"
+			android:exported="true"
+
+			>
+			<intent-filter>
+				<action android:name="hello"></action>
+			</intent-filter>
+		</receiver>
+	</application>
+
+</manifest>

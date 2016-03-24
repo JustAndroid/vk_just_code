@@ -1,0 +1,102 @@
+<resources>
+    <string name="app_name">Вконтакте робот</string>
+    <array name="menu_list">
+
+        <item>1.Прибыль</item>
+        <item>2.Сиги</item>
+        <item>3.Туалет</item>
+        <item>4.Качнуть бицуху</item>
+        <item>5.Качнуть всем корешам</item>
+        <item>6.Удалить тех на кого подписан</item>
+        <item>7.Чистка корешей</item>
+        <item>8.Одобрить все заявки</item>
+        <item>9.Карты</item>
+        <item>10.Кинуть 120 дрожжей самым нищим по рейтингу</item>
+        <item>11.Мезен пацанский</item>
+        <item>12.Харчки 120 челам</item>
+        <item>13.Пресани терпилу 101 раз</item>
+        <item>14.Мезен Авторитетный</item>
+        <item>15.Чистка</item>
+
+
+        <!--<item>Добавить Тюряжников с подписчиков, но если заблокирован или удален, то не добавлять.</item>-->
+    </array>
+
+    <array name="max_uron">
+        <item>10к</item>
+        <item>30к</item>
+        <item>50к</item>
+        <item>100к</item>
+        <item>500к</item>
+        <item>1кк</item>
+
+    </array>
+    <array name="tupePR">
+        <item>Коментарии</item>
+        <item>Обсуждения</item>
+        <item>Стена</item>
+    </array>
+
+    <array name="main_meny_texts">
+        <item>Нападения на боссов</item>
+        <item>Сбор валют(не пашет)</item>
+        <item>Харчки, нападения, дрожжи(разное)</item>
+        <item>Чистка корешей</item>
+        <item>Пиар</item>
+        <item>Проверка достижений друга</item>
+        <item>Нападения на корешей</item>
+
+    </array>
+
+
+    <string name="kirpich">Кирпич</string>
+    <string name="sizyi">Сизый</string>
+    <string name="mahno">Махно</string>
+    <string name="lutyi">Лютый</string>
+    <string name="shaiba">Шайба</string>
+    <string name="mezen">Музен</string>
+    <string name="burat">Бурят</string>
+    <string name="dada_masha">Дядя Миша</string>
+    <string name="bandak">Бандяк</string>
+    <string name="abu">Абу</string>
+    <string name="grizli">Гризли</string>
+    <string name="vorkuta">Воркута</string>
+    <string name="hirurg">Хирург</string>
+    <string name="palych">Палич</string>
+    <string name="cyklop">Цыклоп</string>
+    <string name="raisa">Раиса</string>
+    <string name="bes">Бес</string>
+    <string name="palenyi">Палений</string>
+    <string name="bliznecy">Близнецы</string>
+    <string name="borzov">Борзов</string>
+    <string name="ehan">Ехан</string>
+    <string name="konvoi">Конвой</string>
+    <string name="dubel">Дюбель</string>
+
+
+    <string name="xp_kirpich">1000</string>
+    <string name="xp_sizyi">10 000</string>
+    <string name="xp_mahno">30 000</string>
+    <string name="xp_lutyi">100 000</string>
+    <string name="xp_shaiba">500 000</string>
+    <string name="xp_mezen">1 000 000</string>
+    <string name="xp_burat">2 000 000</string>
+    <string name="xp_dada_masha">3 000 000</string>
+    <string name="xp_bandak">5 000 000</string>
+    <string name="xp_abu">8 000 000</string>
+    <string name="xp_grizli">10 000 000</string>
+    <string name="xp_vorkuta">10 000 000</string>
+    <string name="xp_hirurg">30 000 000</string>
+    <string name="xp_palych">100 000</string>
+    <string name="xp_cyklop">300 000</string>
+    <string name="xp_raisa">300 000</string>
+    <string name="xp_bes">700 000</string>
+    <string name="xp_palenyi">1 500 000</string>
+    <string name="xp_bliznecy">2 000 000</string>
+    <string name="xp_borzov">3 000 000</string>
+    <string name="xp_ehan">7 000 000</string>
+    <string name="xp_konvoi">10 000 000</string>
+    <string name="xp_dubel">10 000 000</string>
+
+
+</resources>
