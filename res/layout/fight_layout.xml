@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Мой урон..."
-
+android:id="@+id/text_my_uron"
         android:textSize="8pt"
          />
 

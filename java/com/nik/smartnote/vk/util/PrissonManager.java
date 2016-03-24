@@ -13,6 +13,8 @@ public class PrissonManager {
 
     public static final String[] MODS = {"simple", "cool", "epic"};
 
+
+
     public static final int[][] BOSSES = {
             {1, R.string.kirpich, R.drawable.kirpich, R.string.xp_kirpich},
             {2, R.string.sizyi, R.drawable.sizyi, R.string.xp_sizyi},

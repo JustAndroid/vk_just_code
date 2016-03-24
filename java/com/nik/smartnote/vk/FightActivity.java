@@ -145,5 +145,10 @@ public void refresh(View v) {
 
    public void onVPah(View v){
         new PrissonManager().kickBoss(FightActivity.this, idBoss);
+       
+       refreshData();
+     }
+   public void onPyrom(View v){
+        new PrissonManager().kickBoss(FightActivity.this, idBoss);
      }
 }

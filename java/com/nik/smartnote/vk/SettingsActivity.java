@@ -54,7 +54,9 @@ public class SettingsActivity extends Activity {
 
             actionBar = getActionBar();
 
-            actionBar.setDisplayHomeAsUpEnabled(true);
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+            }
         }
 
         ProgressDialog mProgressDialog = new ProgressDialog(SettingsActivity.this);
