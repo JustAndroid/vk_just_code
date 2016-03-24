@@ -37,7 +37,7 @@ EditText editTextSum;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.attak_friend_layout);
+        setContentView(R.layout.event_friend_layout);
 
         ActionBar actionBar = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
