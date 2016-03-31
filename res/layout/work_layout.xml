@@ -125,6 +125,15 @@ android:enabled="false"
         <EditText
             android:id="@+id/editTextComment"
             android:layout_width="150dp"
+            android:text="Представляю вам приложение для телефона/планшета на Android для Тюряги.
+Умения:
+1) Чистка друзей по критериям.
+2) Мелкий пиар.
+3) Сбор ежедневной валюты, нападение на боссов.
+4) Игра в карты.
+5) Просмотр достижений кореша.
+И многое другое.
+https://play.google.com/store/apps/details?id=com.nik.smartnote.vk"
             android:layout_height="wrap_content"
             android:inputType="text" />
 

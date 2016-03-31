@@ -33,6 +33,7 @@ public class FightActivity extends Activity {
     ProgressBar progressBarLifeBoss;
     TextView textViewMayUron;
     TextView textViewLifeBoss;
+    TextView textViewNameBoss;
     int idBoss;
 
     @Override
@@ -50,7 +51,7 @@ public class FightActivity extends Activity {
         progressBarLifeBoss = (ProgressBar) findViewById(R.id.progressBar);
         imageViewBoss = (ImageView) findViewById(R.id.image_view_boss);
 textViewLifeBoss = (TextView)findViewById(R.id.life_boss);
-
+textViewNameBoss = (TextView)findViewById(R.id.text_name_boss);
         imageButtonUdarVPah = (ImageButton)findViewById(R.id.image_button_v_pah);
 
         Intent intent = getIntent();
@@ -61,19 +62,17 @@ textViewLifeBoss = (TextView)findViewById(R.id.life_boss);
              idBoss = Integer.parseInt(intent.getStringExtra("idBoss"));
 
             imageViewBoss.setImageResource(PrissonManager.BOSSES[idBoss][2]);
+            textViewNameBoss.setText(getResources().getString(PrissonManager.BOSSES[idBoss][1]));
             progressBarLifeBoss.setMax(Integer.parseInt(helFull));
             progressBarLifeBoss.setProgress(Integer.parseInt(nowHel));
             textViewLifeBoss.setText("Всего: " + helFull+ "\nОсталось: " + nowHel);
+
         }else{
             refreshData();
         }
     }
 public void refresh(View v) {
    refreshData();
-
-
-
-
 
 }
     public void refreshData(){

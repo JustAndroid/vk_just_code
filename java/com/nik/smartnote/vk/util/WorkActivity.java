@@ -126,9 +126,9 @@ public class WorkActivity extends Activity {
         String savedText1 = sPref.getString(SAVED_TEXT1, "");
         String savedText3 = sPref.getString(SAVED_TEXT2, "");
 
-        editTextComment.setText(savedText);
-        editTextIdPost.setText(savedText1);
-        editTextIdPage.setText(savedText3);
+       // editTextComment.setText(savedText);
+       // editTextIdPost.setText(savedText1);
+       // editTextIdPage.setText(savedText3);
         Toast.makeText(this, "Ваш прежний комментарий загружен!", Toast.LENGTH_SHORT).show();
     }
 

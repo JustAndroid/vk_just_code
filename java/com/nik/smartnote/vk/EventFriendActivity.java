@@ -39,7 +39,7 @@ EditText editTextSum;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_friend_layout);
 
-        ActionBar actionBar = null;
+        ActionBar actionBar;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             actionBar = getActionBar();
 
