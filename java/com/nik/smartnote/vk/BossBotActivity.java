@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.nik.smartnote.vk.adapter.BossBotAdapter;
+
 /**
  * Created by Николай on 20.02.2016.
  */
@@ -19,9 +21,9 @@ ListView bossList;
         setContentView(R.layout.boss_bot);
 
 bossList = (ListView)findViewById(R.id.boss_bot_list);
-        
+        bossList.setAdapter(new BossBotAdapter(this));
 
-        //todo добавить код бота боссов
+
     }
 
 public void botGo(View v){

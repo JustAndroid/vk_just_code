@@ -33,6 +33,9 @@
             android:name=".AchievementsActivity"
             android:label="Проверка пользователя" />
         <activity
+            android:name=".BossBotActivity"
+            android:label="Выбор боссов" />
+        <activity
             android:name=".MainMenu"
             android:label="Главное меню" />
         <activity
