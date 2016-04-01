@@ -33,6 +33,7 @@ import com.nik.smartnote.vk.util.XMLParser;
  */
 public class MainMenu extends Activity {
     ActionBar actionBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +46,6 @@ public class MainMenu extends Activity {
             actionBar.setDisplayHomeAsUpEnabled(true);
 
         }
-
-
 
 
         ListView listView = (ListView) findViewById(R.id.main_list_view);
@@ -96,17 +95,17 @@ public class MainMenu extends Activity {
                         } else {
                             String helFull = xmlParser.parsXMLTeg(xmlRezult, "h_full");
 
-                            if(helFull != null){
+                            if (helFull != null) {
                                 String nowHel = xmlParser.parsXMLTeg(xmlRezult, "h_now");
-                                int  idBoss =  new PrissonManager().getBoss(Integer.parseInt(xmlParser.parsXMLTeg(xmlRezult, "id")));
+                                int idBoss = new PrissonManager().getBoss(Integer.parseInt(xmlParser.parsXMLTeg(xmlRezult, "id")));
                                 System.out.println(idBoss);
-Intent intent = new Intent(MainMenu.this, FightActivity.class);
+                                Intent intent = new Intent(MainMenu.this, FightActivity.class);
                                 intent.putExtra("helFull", helFull);
                                 intent.putExtra("nowHel", nowHel);
                                 intent.putExtra("idBoss", Integer.toString(idBoss));
 
-                                        startActivity(intent);
-                            }else {
+                                startActivity(intent);
+                            } else {
                                 startActivity(new Intent(MainMenu.this, BossMenuActivity.class));
 
                             }
@@ -129,9 +128,10 @@ Intent intent = new Intent(MainMenu.this, FightActivity.class);
                         startActivity(new Intent(MainMenu.this, AchievementsActivity.class));
                         break;
                     case 6:
-
-                        startActivity(new Intent(MainMenu.this,EventFriendActivity.class));
-
+                        startActivity(new Intent(MainMenu.this, EventFriendActivity.class));
+                        break;
+                    case 7:
+                        startActivity(new Intent(MainMenu.this, BossBotActivity.class));
                         break;
 
                 }
@@ -140,15 +140,15 @@ Intent intent = new Intent(MainMenu.this, FightActivity.class);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
