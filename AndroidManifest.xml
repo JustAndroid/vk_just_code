@@ -77,6 +77,16 @@
                 <action android:name="hello"></action>
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".Resivers.BossBot"
+            android:enabled="true"
+            android:exported="true"
+
+            >
+            <intent-filter>
+                <action android:name="go"></action>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

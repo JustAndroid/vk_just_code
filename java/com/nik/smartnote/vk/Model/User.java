@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 import com.nik.smartnote.vk.MainActivity;
 
@@ -23,7 +24,7 @@ public class User {
     private static String userId;
     private static String authKey;;
 
-
+SharedPreferences sPref;
 
    private static User mInstance;
 
@@ -71,7 +72,7 @@ public class User {
                 .edit()
                 .putString(USER_ID, userId)
         .commit();
-System.out.println("Ложим эту хуйню!!!"+PreferenceManager.getDefaultSharedPreferences(context)
+System.out.println("Ложим эту хуйню!!!" + PreferenceManager.getDefaultSharedPreferences(context)
         .getString(USER_ID, ""));
 
         this.userId = userId;
@@ -101,4 +102,28 @@ System.out.println("Null, получаем с памяти.....");
         userId=null;
         authKey=null;;
     }
+
+//    void saveText(Context context, String key, String data ) {
+//
+//        sPref = context.getPreferences(MODE_PRIVATE);
+//        SharedPreferences.Editor ed = sPref.edit();
+//        ed.putString(key, data);
+//
+//
+//        ed.commit();
+//        Toast.makeText(this, "Комментарий сохраненный!", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    void loadText() {
+//
+//        sPref = getPreferences(MODE_PRIVATE);
+//        String savedText = sPref.getString(SAVED_TEXT, "");
+//        String savedText1 = sPref.getString(SAVED_TEXT1, "");
+//        String savedText3 = sPref.getString(SAVED_TEXT2, "");
+//
+//        // editTextComment.setText(savedText);
+//        // editTextIdPost.setText(savedText1);
+//        // editTextIdPage.setText(savedText3);
+//
+//    }
 }
