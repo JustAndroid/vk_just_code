@@ -153,6 +153,7 @@ public class MainMenu extends Activity {
                 finish();
                 break;
             case R.id.about:
+                User.getInstance().clear(this);
                 startActivity(new Intent(MainMenu.this, DeveloperActivity.class));
 
         }

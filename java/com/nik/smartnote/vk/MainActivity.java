@@ -67,17 +67,17 @@ public class MainActivity extends Activity {
 
 
 
-//        webView.loadUrl(
-//                AUTHORIZE_URL
-//                        + "client_id=" + CLIENT_ID + "&"
-//                        + "redirect_uri=" + REDIRECT_URL + "&"
-//                        + "display=page&"
-//                        + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
-//                        "," + APIFunctions.Scope.FRIENDS +
-//                        "," + APIFunctions.Scope.WALL +
-//                        "," + APIFunctions.Scope.OFFLINE
-//        );
-        startActivity(new Intent(MainActivity.this, MainMenu.class));
+        webView.loadUrl(
+                AUTHORIZE_URL
+                        + "client_id=" + CLIENT_ID + "&"
+                        + "redirect_uri=" + REDIRECT_URL + "&"
+                        + "display=page&"
+                        + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
+                        "," + APIFunctions.Scope.FRIENDS +
+                        "," + APIFunctions.Scope.WALL +
+                        "," + APIFunctions.Scope.OFFLINE
+        );
+
         webView.setWebViewClient(new MyWebViewClient());
         progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

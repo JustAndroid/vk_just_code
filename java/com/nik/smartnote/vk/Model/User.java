@@ -1,13 +1,8 @@
 package com.nik.smartnote.vk.Model;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.widget.Toast;
-
-import com.nik.smartnote.vk.MainActivity;
 
 /**
  * Created by mytrofanenkova-io on 04.03.2016.
@@ -17,14 +12,14 @@ public class User {
     final static String USER_ID = "user_id";
     final static String AUTH_KEY = "auth_key";
     final static String ACCESS_TOKEN = "access_token";
-
+final static String NAME_USER_PREFENCES = "prisson.prefencess";
 
 
     private static String accessToken;
     private static String userId;
     private static String authKey;;
 
-SharedPreferences sPref;
+
 
    private static User mInstance;
 
@@ -39,8 +34,8 @@ SharedPreferences sPref;
     public  String getAccessToken(Context context) {
         if (accessToken == null) {
 
-            accessToken =   PreferenceManager.getDefaultSharedPreferences(context)
-                    .getString(ACCESS_TOKEN,"");
+            accessToken =    context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+                    .getString(ACCESS_TOKEN,"3232");
 
         }
         return accessToken;
@@ -48,10 +43,16 @@ SharedPreferences sPref;
 
     public  void setAccessToken(String acessToken,Context context) {
 
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putString(ACCESS_TOKEN, acessToken)
-                .commit();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(ACCESS_TOKEN, acessToken);
+        editor.commit();
+
+
+//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+//                .edit()
+//                .putString(ACCESS_TOKEN, acessToken)
+//                .commit();
 
         User.accessToken = acessToken;
 
@@ -61,19 +62,22 @@ SharedPreferences sPref;
     public String getUser_id(Context context) {
         if (userId == null) {
 
-            userId = PreferenceManager.getDefaultSharedPreferences(context)
-                    .getString(USER_ID, "");
+            userId =  context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+                    .getString(USER_ID, "32323");
         }
         return userId;
     }
 
     public void setUser_id(String userId, Context context) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putString(USER_ID, userId)
-        .commit();
-System.out.println("Ложим эту хуйню!!!" + PreferenceManager.getDefaultSharedPreferences(context)
-        .getString(USER_ID, ""));
+//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+//                .edit()
+//                .putString(USER_ID, userId)
+//        .commit();
+
+        SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(USER_ID, userId);
+        editor.commit();
 
         this.userId = userId;
     }
@@ -82,48 +86,34 @@ System.out.println("Ложим эту хуйню!!!" + PreferenceManager.getDefa
 
         if (authKey == null) {
 System.out.println("Null, получаем с памяти.....");
-             authKey = PreferenceManager.getDefaultSharedPreferences(context)
-                    .getString(AUTH_KEY, "");
+            SharedPreferences sharedPreferences = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
+             authKey =  sharedPreferences.getString(AUTH_KEY, "45566");
        }
 
         return authKey;
     }
 
     public void setAuth_key(String authKey, Context context) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putString(AUTH_KEY, authKey)
-                .commit();
+//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+//                .edit()
+//                .putString(AUTH_KEY, authKey)
+//                .commit();
+
+        SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(AUTH_KEY, authKey);
+        editor.commit();
+
         this.authKey = authKey;
     }
 
-    public void clear(){
+    public void clear(Context context){
         accessToken = null;
         userId=null;
-        authKey=null;;
+        authKey=null;
+        System.out.println(context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+                .getString(AUTH_KEY, "ХУЙ"));
+
     }
 
-//    void saveText(Context context, String key, String data ) {
-//
-//        sPref = context.getPreferences(MODE_PRIVATE);
-//        SharedPreferences.Editor ed = sPref.edit();
-//        ed.putString(key, data);
-//
-//
-//        ed.commit();
-//        Toast.makeText(this, "Комментарий сохраненный!", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    void loadText() {
-//
-//        sPref = getPreferences(MODE_PRIVATE);
-//        String savedText = sPref.getString(SAVED_TEXT, "");
-//        String savedText1 = sPref.getString(SAVED_TEXT1, "");
-//        String savedText3 = sPref.getString(SAVED_TEXT2, "");
-//
-//        // editTextComment.setText(savedText);
-//        // editTextIdPost.setText(savedText1);
-//        // editTextIdPage.setText(savedText3);
-//
-//    }
 }
