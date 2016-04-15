@@ -36,7 +36,6 @@ import java.net.URLEncoder;
 public class SettingsActivity extends Activity {
     //писал на быструю руку, исправить и рефлакторить
     TextView statusTextView;
-   public final String BOSS_INFO = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=getBoss&user=" + User.getInstance().getUser_id(SettingsActivity.this);
    public final String PRIBIL = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=getAllBuildingsRewards&user=" + User.getInstance().getUser_id(SettingsActivity.this);
    public final String SIGI = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&getidea=1&method=office&user=" + User.getInstance().getUser_id(SettingsActivity.this);
    public final String TUALET = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=collectToiletPaper&user=" + User.getInstance().getUser_id(SettingsActivity.this);
@@ -123,7 +122,7 @@ public class SettingsActivity extends Activity {
                                 taskManager.execute(TaskManager.PARASHA_DROGGI);
                                 break;
                             case 10:
-                                HTTPHelper.getInstance().requestGet(BOSS_INFO, null);
+                                HTTPHelper.getInstance().requestGet(new PrissonManager().getBossInfo(SettingsActivity.this), null);
                               statusTextView.setText(HTTPHelper.getInstance().requestGet(
                                       "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this)
                                               + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&boss%5Fid="

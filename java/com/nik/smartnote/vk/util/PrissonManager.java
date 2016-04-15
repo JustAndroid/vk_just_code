@@ -59,6 +59,11 @@ public class PrissonManager {
     }
 
 
+   public String getBossInfo(Context context){
+        return HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(context) + "&method=getBoss&user=" + User.getInstance().getUser_id(context), null);
+    }
+
+
 
 
    public void kickBoss(Context context, int id,int idWeapon){
@@ -108,7 +113,7 @@ public class PrissonManager {
     }
 
 
-public String getUSerInfo(int id, Context context){
+public String getUserInfo(int id, Context context){
 
     return HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
             + User.getInstance().getAuth_key(context) + "&with_guild=1&user="

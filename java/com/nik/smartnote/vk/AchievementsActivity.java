@@ -10,12 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -37,7 +34,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 
 
 /**
@@ -82,7 +78,7 @@ imageButton = (ImageButton)findViewById(R.id.serchfriend);
                     JSONArray response = jsonObject.getJSONArray("response");
 
                     String id = response.getJSONObject(0).getString("uid");
-                    String info = new PrissonManager().getUSerInfo(Integer.parseInt(id), AchievementsActivity.this);
+                    String info = new PrissonManager().getUserInfo(Integer.parseInt(id), AchievementsActivity.this);
                     if (!cleanFriendsActivity.isPlaerNotFount(info)) {
 
 

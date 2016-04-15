@@ -64,7 +64,7 @@ public class MainMenu extends Activity {
                         progressDialog.setMessage("Отправка запроса...");
                         progressDialog.show();
 
-                        String xmlRezult = HTTPHelper.getInstance().requestGet(new SettingsActivity().BOSS_INFO, null);
+                        String xmlRezult = new PrissonManager().getBossInfo(MainMenu.this);
                         progressDialog.dismiss();
                         XMLParser xmlParser = new XMLParser();
                         String status = xmlParser.parsXMLTeg(xmlRezult, "status");

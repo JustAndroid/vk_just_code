@@ -76,7 +76,7 @@ public void refresh(View v) {
 
 }
     public void refreshData(){
-        String xmlRezult = HTTPHelper.getInstance().requestGet(new SettingsActivity().BOSS_INFO, null);
+        String xmlRezult = new PrissonManager().getBossInfo(FightActivity.this);
         XMLParser xmlParser = new XMLParser();
         String status = xmlParser.parsXMLTeg(xmlRezult, "status");
         if (status != null) {

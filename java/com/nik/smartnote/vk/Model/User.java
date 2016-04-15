@@ -1,8 +1,11 @@
 package com.nik.smartnote.vk.Model;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import com.nik.smartnote.vk.MayApplication;
 
 /**
  * Created by mytrofanenkova-io on 04.03.2016.
@@ -19,7 +22,7 @@ final static String NAME_USER_PREFENCES = "prisson.prefencess";
     private static String userId;
     private static String authKey;;
 
-
+Context context;
 
    private static User mInstance;
 
@@ -31,9 +34,9 @@ final static String NAME_USER_PREFENCES = "prisson.prefencess";
    }
 
 
-    public  String getAccessToken(Context context) {
+    public  String getAccessToken(Context context1) {
         if (accessToken == null) {
-
+            context = MayApplication.AppContext;
             accessToken =    context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
                     .getString(ACCESS_TOKEN,"3232");
 
@@ -41,39 +44,33 @@ final static String NAME_USER_PREFENCES = "prisson.prefencess";
         return accessToken;
     }
 
-    public  void setAccessToken(String acessToken,Context context) {
-
+    public  void setAccessToken(String acessToken,Context context1) {
+        context = MayApplication.AppContext;
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(ACCESS_TOKEN, acessToken);
         editor.commit();
 
 
-//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-//                .edit()
-//                .putString(ACCESS_TOKEN, acessToken)
-//                .commit();
+
 
         User.accessToken = acessToken;
 
     }
 
 
-    public String getUser_id(Context context) {
+    public String getUser_id(Context context1) {
         if (userId == null) {
-
+            context = MayApplication.AppContext;
             userId =  context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
                     .getString(USER_ID, "32323");
         }
         return userId;
     }
 
-    public void setUser_id(String userId, Context context) {
-//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-//                .edit()
-//                .putString(USER_ID, userId)
-//        .commit();
+    public void setUser_id(String userId, Context context1) {
 
+        context = MayApplication.AppContext;
         SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(USER_ID, userId);
@@ -82,8 +79,8 @@ final static String NAME_USER_PREFENCES = "prisson.prefencess";
         this.userId = userId;
     }
 
-    public String getAuth_key(Context context) {
-
+    public String getAuth_key(Context context1) {
+        context = MayApplication.AppContext;
         if (authKey == null) {
 System.out.println("Null, получаем с памяти.....");
             SharedPreferences sharedPreferences = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
@@ -93,12 +90,8 @@ System.out.println("Null, получаем с памяти.....");
         return authKey;
     }
 
-    public void setAuth_key(String authKey, Context context) {
-//        context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-//                .edit()
-//                .putString(AUTH_KEY, authKey)
-//                .commit();
-
+    public void setAuth_key(String authKey, Context context1) {
+        context = MayApplication.AppContext;
         SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(AUTH_KEY, authKey);
@@ -107,7 +100,8 @@ System.out.println("Null, получаем с памяти.....");
         this.authKey = authKey;
     }
 
-    public void clear(Context context){
+    public void clear(Context context1){
+        context = MayApplication.AppContext;
         accessToken = null;
         userId=null;
         authKey=null;
