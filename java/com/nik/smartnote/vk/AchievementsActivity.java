@@ -78,7 +78,7 @@ imageButton = (ImageButton)findViewById(R.id.serchfriend);
                     JSONArray response = jsonObject.getJSONArray("response");
 
                     String id = response.getJSONObject(0).getString("uid");
-                    String info = new PrissonManager().getUserInfo(Integer.parseInt(id), AchievementsActivity.this);
+                    String info = new PrissonManager().getUserInfo(Integer.parseInt(id));
                     if (!cleanFriendsActivity.isPlaerNotFount(info)) {
 
 

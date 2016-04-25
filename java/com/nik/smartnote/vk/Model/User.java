@@ -7,9 +7,7 @@ import android.preference.PreferenceManager;
 
 import com.nik.smartnote.vk.MayApplication;
 
-/**
- * Created by mytrofanenkova-io on 04.03.2016.
- */
+
 public class User {
 
     final static String USER_ID = "user_id";
@@ -34,41 +32,38 @@ Context context;
    }
 
 
-    public  String getAccessToken(Context context1) {
+    public  String getAccessToken() {
         if (accessToken == null) {
             context = MayApplication.AppContext;
-            accessToken =    context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-                    .getString(ACCESS_TOKEN,"3232");
+            accessToken  =  context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
+                    .getString(ACCESS_TOKEN,"");
 
         }
         return accessToken;
     }
 
-    public  void setAccessToken(String acessToken,Context context1) {
+    public  void setAccessToken(String accessToken) {
         context = MayApplication.AppContext;
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = settings.edit();
-        editor.putString(ACCESS_TOKEN, acessToken);
+        editor.putString(ACCESS_TOKEN, accessToken);
         editor.commit();
 
-
-
-
-        User.accessToken = acessToken;
+        User.accessToken = accessToken;
 
     }
 
 
-    public String getUser_id(Context context1) {
+    public String getUser_id() {
         if (userId == null) {
             context = MayApplication.AppContext;
             userId =  context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-                    .getString(USER_ID, "32323");
+                    .getString(USER_ID, "");
         }
         return userId;
     }
 
-    public void setUser_id(String userId, Context context1) {
+    public void setUser_id(String userId) {
 
         context = MayApplication.AppContext;
         SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
@@ -79,18 +74,18 @@ Context context;
         this.userId = userId;
     }
 
-    public String getAuth_key(Context context1) {
+    public String getAuth_key() {
         context = MayApplication.AppContext;
         if (authKey == null) {
-System.out.println("Null, получаем с памяти.....");
+
             SharedPreferences sharedPreferences = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
-             authKey =  sharedPreferences.getString(AUTH_KEY, "45566");
+             authKey =  sharedPreferences.getString(AUTH_KEY, "");
        }
 
         return authKey;
     }
 
-    public void setAuth_key(String authKey, Context context1) {
+    public void setAuth_key(String authKey) {
         context = MayApplication.AppContext;
         SharedPreferences settings = context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = settings.edit();
@@ -99,14 +94,14 @@ System.out.println("Null, получаем с памяти.....");
 
         this.authKey = authKey;
     }
-
-    public void clear(Context context1){
+//тестовый метод, для проверки шарепрефенцес
+    public void clear(){
         context = MayApplication.AppContext;
         accessToken = null;
         userId=null;
         authKey=null;
         System.out.println(context.getSharedPreferences(NAME_USER_PREFENCES, Context.MODE_PRIVATE)
-                .getString(AUTH_KEY, "ХУЙ"));
+                .getString(AUTH_KEY, ""));
 
     }
 

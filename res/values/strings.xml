@@ -17,6 +17,8 @@
         <item>13.Пресани терпилу 101 раз</item>
         <item>14.Мезен Авторитетный</item>
         <item>15.Чистка</item>
+        <item>16.Сыпем кому то нычки)))</item>
+        <item>17.ДЛЯ САНИ!!!)</item>
 
 
         <!--<item>Добавить Тюряжников с подписчиков, но если заблокирован или удален, то не добавлять.</item>-->
@@ -73,6 +75,7 @@
     <string name="ehan">Ехан</string>
     <string name="konvoi">Конвой</string>
     <string name="dubel">Дюбель</string>
+    <string name="krest">Крест</string>
 
 
     <string name="xp_kirpich">1000</string>
@@ -98,6 +101,7 @@
     <string name="xp_ehan">7 000 000</string>
     <string name="xp_konvoi">10 000 000</string>
     <string name="xp_dubel">10 000 000</string>
+    <string name="xp_krest">5 000 000 000</string>
 
 
 </resources>

@@ -106,10 +106,10 @@ public 	final static String	OFFLINE = "offline";
 	public static class Wall
 	{
 		public	final static String WALL = "wall.";
-		public static  String delete(int onwerId, int postId , Context context){
+		public static  String delete(int onwerId, int postId){
 
 
-			return HTTPHelper.getInstance().requestGet(START_URL + WALL + "delete?owner_id=-"+Integer.toString(onwerId)+"&post_id="+Integer.toString(postId)+"&access_token="+ User.getInstance().getAccessToken(context), null);
+			return HTTPHelper.getInstance().requestGet(START_URL + WALL + "delete?owner_id=-"+Integer.toString(onwerId)+"&post_id="+Integer.toString(postId)+"&access_token="+ User.getInstance().getAccessToken(), null);
 		}
 
 
@@ -128,26 +128,26 @@ public 	final static String	OFFLINE = "offline";
 
        // public String getRequests(String count, String extended, String need_mutual, String out){
 
-		public static String getFriends(int count, Activity activity){
-			String urlRequest = START_URL + FRENDS + "get?count="+count+"&access_token="+ User.getInstance().getAccessToken(activity);
+		public static String getFriends(int count){
+			String urlRequest = START_URL + FRENDS + "get?count="+count+"&access_token="+ User.getInstance().getAccessToken();
 
 return HTTPHelper.getInstance().requestGet(urlRequest, null);
 		}
 
-        public static String getRequests(int count,int out, Context context){
+        public static String getRequests(int count,int out){
 
-String UrlRequest = START_URL + FRENDS + "getRequests?count="+count+"&extended=0&need_mutual=0&out="+out+"&access_token="+ User.getInstance().getAccessToken(context);
+String UrlRequest = START_URL + FRENDS + "getRequests?count="+count+"&extended=0&need_mutual=0&out="+out+"&access_token="+ User.getInstance().getAccessToken();
 
         return  HTTPHelper.getInstance().requestGet(UrlRequest, null);
         }
 
-	    public static String delete(int id, Context context){
-String UrlRequest = START_URL + FRENDS + "delete?user_id=" + id + "&access_token=" + User.getInstance().getAccessToken(context);
+	    public static String delete(int id){
+String UrlRequest = START_URL + FRENDS + "delete?user_id=" + id + "&access_token=" + User.getInstance().getAccessToken();
 
 		    return  HTTPHelper.getInstance().requestGet(UrlRequest, null);
 	    }
-		public static String add(int id, Context context){
-String UrlRequest = START_URL + FRENDS + "add?user_id=" + id + "&access_token=" + User.getInstance().getAccessToken(context);
+		public static String add(int id){
+String UrlRequest = START_URL + FRENDS + "add?user_id=" + id + "&access_token=" + User.getInstance().getAccessToken();
 
 		    return  HTTPHelper.getInstance().requestGet(UrlRequest, null);
 	    }
@@ -161,7 +161,7 @@ String UrlRequest = START_URL + FRENDS + "add?user_id=" + id + "&access_token=" 
 			return HTTPHelper.getInstance().requestGet(START_URL + "users.get?user_ids=" + id_name , null);
 
 		}
-		public static ArrayList<Integer> getFollowers( Activity activity){
+		public static ArrayList<Integer> getFollowers(){
 
 			JSONObject jsonObject;
 			JSONObject JSONResponse;
@@ -172,7 +172,7 @@ String UrlRequest = START_URL + FRENDS + "add?user_id=" + id + "&access_token=" 
 
 				jsonObject = new JSONObject(HTTPHelper.getInstance().requestGet(START_URL
 						+ "users.getFollowers?user_id="
-						+ User.getInstance().getUser_id(activity) + "&offset=" + Integer.toString(lastId) + "&count=1000", null));
+						+ User.getInstance().getUser_id() + "&offset=" + Integer.toString(lastId) + "&count=1000", null));
 
 
 				JSONResponse = jsonObject.getJSONObject("response");
@@ -191,7 +191,7 @@ String UrlRequest = START_URL + FRENDS + "add?user_id=" + id + "&access_token=" 
 
 					jsonObject = new JSONObject(HTTPHelper.getInstance().requestGet(START_URL
 							+ "users.getFollowers?user_id="
-							+ User.getInstance().getUser_id(activity) + "&offset=" + Integer.toString(lastId) + "&count=1000", null));
+							+ User.getInstance().getUser_id() + "&offset=" + Integer.toString(lastId) + "&count=1000", null));
 					JSONResponse = jsonObject.getJSONObject("response");
 					 allFollovers = JSONResponse.getJSONArray("items");
 

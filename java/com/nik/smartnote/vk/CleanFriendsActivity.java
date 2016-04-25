@@ -341,13 +341,13 @@ public class CleanFriendsActivity extends Activity {
             if (array[0] == ALL_FRIENDS) {
                 Log.w("Лог Асунг Таска", "Кореша");
 
-                JSONArray allFriendsVK = JsonHelper.getInstanse().parse(APIFunctions.Friends.getFriends(0,CleanFriendsActivity.this));
+                JSONArray allFriendsVK = JsonHelper.getInstanse().parse(APIFunctions.Friends.getFriends(0));
                 checkFriends(allFriendsVK, array);
 
             } else if (array[0] == FOLLOWERS) {
 
 
-                  checkFollowers(APIFunctions.Users.getFollowers(CleanFriendsActivity.this), array);
+                  checkFollowers(APIFunctions.Users.getFollowers(), array);
 
             }
 
@@ -373,11 +373,11 @@ userInfo = null;
                     if (array[1] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
                         if (isPlaerNotFount(userInfo)) {
                             publishProgress(null, null, "Удалил: не играет ***");
-                            APIFunctions.Friends.delete(userID, CleanFriendsActivity.this);
+                            APIFunctions.Friends.delete(userID);
                             continue;
                         }
                     }
@@ -388,8 +388,8 @@ userInfo = null;
 
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
                         String parserRezult = new XMLParser().parsXMLTeg(userInfo, "rating");
 
                         int plaerAvtoritet;
@@ -403,7 +403,7 @@ userInfo = null;
                         if (array[2] >= plaerAvtoritet) {
                             publishProgress(null, null, "Удалил: *** Авторитет - " + plaerAvtoritet + " *** ТАланты - " + getPlayerTalants(userInfo) + "*** Урон -  " + getMaxUron(userInfo));
 
-                            APIFunctions.Friends.delete(userID,CleanFriendsActivity.this);
+                            APIFunctions.Friends.delete(userID);
                             continue;
                         }
                     }
@@ -411,12 +411,12 @@ userInfo = null;
                     if (array[3] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
 
                         if (array[3] >= getPlayerTalants(userInfo)) {
                             publishProgress(null, null, "Удалил: *** ТАланты - " + getPlayerTalants(userInfo));
-                            APIFunctions.Friends.delete(userID,CleanFriendsActivity.this);
+                            APIFunctions.Friends.delete(userID);
                             continue;
                         }
                     }
@@ -424,12 +424,12 @@ userInfo = null;
                     if (array[4] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
 
                         if (array[4] > getMaxUron(userInfo)) {
                             publishProgress(null, null,"Удалил: *** ТАланты - " + getPlayerTalants(userInfo));
-                            APIFunctions.Friends.delete(userID,CleanFriendsActivity.this);
+                            APIFunctions.Friends.delete(userID);
                             continue;
                         }
                     }
@@ -439,7 +439,7 @@ userInfo = null;
                             publishProgress(null, null, i + ") Удалил: \n" +
                                     "Забанен *** https://vk.com/id" + jsonArray.getString(i));
 
-                            APIFunctions.Friends.delete(userID,CleanFriendsActivity.this);
+                            APIFunctions.Friends.delete(userID);
                         }
                     }
 
@@ -471,8 +471,8 @@ userInfo = null;
                     if (array[1] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
                         if (isPlaerNotFount(userInfo)) {
 
                             continue;
@@ -482,8 +482,8 @@ userInfo = null;
                     if (array[2] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
 
                         String parserRezult = new XMLParser().parsXMLTeg(userInfo, "rating");
                         int plaerAvtoritet;
@@ -501,8 +501,8 @@ userInfo = null;
                     if (array[3] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
                         if (array[3] > getPlayerTalants(userInfo)) {
                             continue;
                         }
@@ -511,8 +511,8 @@ userInfo = null;
                     if (array[4] != 0) {
                         if(userInfo == null){
                             userInfo = HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-                                    + User.getInstance().getAuth_key(CleanFriendsActivity.this) + "&with_guild=1&user="
-                                    + User.getInstance().getUser_id(CleanFriendsActivity.this) + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
+                                    + User.getInstance().getAuth_key() + "&with_guild=1&user="
+                                    + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(userID), null);}
                         if (array[4] > getMaxUron(userInfo)) {
                             continue;
                         }
@@ -526,7 +526,7 @@ userInfo = null;
                     publishProgress(null, null,"Добавлен");
                     Log.w("Добавление", "User = " + followers.get(i));
 
-                    APIFunctions.Friends.add(followers.get(i),CleanFriendsActivity.this);
+                    APIFunctions.Friends.add(followers.get(i));
 
             }
             return userAdds;

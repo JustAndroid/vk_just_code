@@ -80,7 +80,7 @@ public class WorkActivity extends Activity {
                         Toast.makeText(WorkActivity.this, "Периодичность не может быть ноль!", Toast.LENGTH_SHORT).show();
                     }
                     Intent intent = new Intent(WorkActivity.this, ServiceStartReceiver.class);
-                    intent.putExtra("access_token", User.getInstance().getAccessToken(WorkActivity.this));
+                    intent.putExtra("access_token", User.getInstance().getAccessToken());
 
                     intent.putExtra("id_post", editTextIdPost.getText().toString());
                     intent.putExtra("id_page", editTextIdPage.getText().toString());
@@ -126,9 +126,9 @@ public class WorkActivity extends Activity {
         String savedText1 = sPref.getString(SAVED_TEXT1, "");
         String savedText3 = sPref.getString(SAVED_TEXT2, "");
 
-       // editTextComment.setText(savedText);
-       // editTextIdPost.setText(savedText1);
-       // editTextIdPage.setText(savedText3);
+        editTextComment.setText(savedText);
+        editTextIdPost.setText(savedText1);
+        editTextIdPage.setText(savedText3);
         Toast.makeText(this, "Ваш прежний комментарий загружен!", Toast.LENGTH_SHORT).show();
     }
 

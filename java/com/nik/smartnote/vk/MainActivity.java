@@ -20,6 +20,7 @@ import com.nik.smartnote.vk.Model.User;
 import com.nik.smartnote.vk.api.APIFunctions;
 import com.nik.smartnote.vk.util.HTTPHelper;
 import com.nik.smartnote.vk.util.ParsDataHelper;
+import com.nik.smartnote.vk.util.XMLParser;
 
 
 public class MainActivity extends Activity {
@@ -38,7 +39,6 @@ public class MainActivity extends Activity {
     static final String APLICATION_URL = "http://vk.com/app1979194";
 
 
-
     boolean loadFinished;
 
     @Override
@@ -55,69 +55,78 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-     //   startActivity(new Intent(MainActivity.this, MainMenu.class));
-
-
-        webView = (WebView) findViewById(R.id.webView);
+//просто входим в меню
+        //   startActivity(new Intent(MainActivity.this, MainMenu.class));
 
         loadFinished = true;
 
 
+        String userId = User.getInstance().getUser_id();
+        String authKey = User.getInstance().getAuth_key();
+//        if ( !userId.equals("")) {
+//            if (isValideAuth(authKey, userId)) {
+//
+//                startActivity(new Intent(MainActivity.this, MainMenu.class));
+//                loadFinished = false;
+//            }else {
+                webView = (WebView) findViewById(R.id.webView);
 
 
 
-        webView.loadUrl(
-                AUTHORIZE_URL
-                        + "client_id=" + CLIENT_ID + "&"
-                        + "redirect_uri=" + REDIRECT_URL + "&"
-                        + "display=page&"
-                        + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
-                        "," + APIFunctions.Scope.FRIENDS +
-                        "," + APIFunctions.Scope.WALL +
-                        "," + APIFunctions.Scope.OFFLINE
-        );
 
-        webView.setWebViewClient(new MyWebViewClient());
-        progressDialog = new ProgressDialog(MainActivity.this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setTitle("Загрузка");
-        progressDialog.setMessage("Грузим страницу...");
-        progressDialog.setCanceledOnTouchOutside(false);
-        progressDialog.show();
-        progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                webView.stopLoading();
-            }
-        });
+                webView.loadUrl(
+                        AUTHORIZE_URL
+                                + "client_id=" + CLIENT_ID + "&"
+                                + "redirect_uri=" + REDIRECT_URL + "&"
+                                + "display=page&"
+                                + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
+                                "," + APIFunctions.Scope.FRIENDS +
+                                "," + APIFunctions.Scope.WALL +
+                                "," + APIFunctions.Scope.OFFLINE
+                );
+
+                webView.setWebViewClient(new MyWebViewClient());
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setTitle("Загрузка");
+                progressDialog.setMessage("Грузим страницу...");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
+                progressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        webView.stopLoading();
+                    }
+                });
+//            }
+//        }
 
     }
 
 
     @Override
     protected void onResume() {
-        if(!loadFinished){
+        if (!loadFinished) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 CookieManager.getInstance().removeSessionCookies(null);
                 CookieManager.getInstance().removeAllCookies(null);
-            }else{
+            } else {
                 CookieManager.getInstance().removeAllCookie();
             }
 
-progressDialog.setMessage("Выполняем выход с аккаунта...");
-        webView.loadUrl(
-                AUTHORIZE_URL
-                        + "client_id=" + CLIENT_ID + "&"
-                        + "redirect_uri=" + REDIRECT_URL + "&"
-                        + "display=page&"
-                        + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
-                        "," + APIFunctions.Scope.FRIENDS +
-                        "," + APIFunctions.Scope.WALL +
-                        "," + APIFunctions.Scope.OFFLINE
-        );
-        System.out.println("Повторно");
+            progressDialog.setMessage("Выполняем выход с аккаунта...");
+            webView.loadUrl(
+                    AUTHORIZE_URL
+                            + "client_id=" + CLIENT_ID + "&"
+                            + "redirect_uri=" + REDIRECT_URL + "&"
+                            + "display=page&"
+                            + "response_type=token&scope=" + APIFunctions.Scope.GROUPS +
+                            "," + APIFunctions.Scope.FRIENDS +
+                            "," + APIFunctions.Scope.WALL +
+                            "," + APIFunctions.Scope.OFFLINE
+            );
+            System.out.println("Повторно");
         }
         super.onResume();
 
@@ -144,49 +153,44 @@ progressDialog.setMessage("Выполняем выход с аккаунта..."
                 progressDialog.show();
                 webView.setVisibility(WebView.INVISIBLE);
                 try {
-
-                   User.getInstance().setAccessToken(ParsDataHelper.parseRedirectUrl(url)[0],MainActivity.this);
-                 User.getInstance().setUser_id(ParsDataHelper.parseRedirectUrl(url)[1],MainActivity.this);
-
-
+System.out.println(ParsDataHelper.parseRedirectUrl(url)[0]);
+                    User.getInstance().setAccessToken(ParsDataHelper.parseRedirectUrl(url)[0]);
+                    User.getInstance().setUser_id(ParsDataHelper.parseRedirectUrl(url)[1]);
 
 
-                  class LoaderTasc extends AsyncTask<String, Void, Void>{
+                    class LoaderTasc extends AsyncTask<String, Void, Void> {
 
 
-                      @Override
-                      protected Void doInBackground(String... params) {
+                        @Override
+                        protected Void doInBackground(String... params) {
 
-                          HTTPHelper.getInstance().requestGet(
-                                  API_URL + "stats.trackVisitor?access_token=" + User.getInstance().getAccessToken(MainActivity.this), null
-                          );
+                            HTTPHelper.getInstance().requestGet(
+                                    API_URL + "stats.trackVisitor?access_token=" + User.getInstance().getAccessToken(), null
+                            );
 
-                          //	HTTPHelper.getInstance().HTTPHelper("http://vk.com/app1979194_52601950");
+                            //	HTTPHelper.getInstance().HTTPHelper("http://vk.com/app1979194_52601950");
 
-                          cookies = CookieManager.getInstance().getCookie(params[0]);
-                          Log.d("MyLog", "All the cookies in a string:" + cookies);
-
-
-                          User.getInstance().setAuth_key(ParsDataHelper.getAuthKey(HTTPHelper.getInstance().requestGet(APLICATION_URL, cookies)),MainActivity.this);
+                            cookies = CookieManager.getInstance().getCookie(params[0]);
+                            Log.d("MyLog", "All the cookies in a string:" + cookies);
 
 
+                            User.getInstance().setAuth_key(ParsDataHelper.getAuthKey(HTTPHelper.getInstance().requestGet(APLICATION_URL, cookies)));
 
 
-                          return null;
-                      }
+                            return null;
+                        }
 
-                      @Override
-                      protected void onPostExecute(Void aVoid) {
-                          super.onPostExecute(aVoid);
-                          progressDialog.hide();
-                         startActivity(new Intent(MainActivity.this, MainMenu.class));
-                      }
-                  }
+                        @Override
+                        protected void onPostExecute(Void aVoid) {
+                            super.onPostExecute(aVoid);
+                            progressDialog.hide();
+                            startActivity(new Intent(MainActivity.this, MainMenu.class));
+                        }
+                    }
                     progressDialog.setMessage("Получаем auth_key...");
                     new LoaderTasc().execute(url);
 
                     System.out.println(url);
-
 
 
                 } catch (Exception e) {
@@ -199,16 +203,30 @@ progressDialog.setMessage("Выполняем выход с аккаунта..."
 
         }
     }
+
+
+    private Boolean isValideAuth(String authKey, String userId) {
+        String url = "http://109.234.156.252/prison/universal.php?user=" + userId + "&method=getUsersTasks&key=" + authKey;
+        if (new XMLParser().parsXMLTeg(HTTPHelper.getInstance().requestGet(url, null), "result") == null) {
+            return true;
+        }
+
+
+        return false;
+
+    }
+
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;

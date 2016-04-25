@@ -19,7 +19,7 @@ public class HTTPHelper implements Runnable {
     private String requestURL;
     String result;
     String cookie;
-int error;
+int errors;
 
 
 
@@ -43,8 +43,8 @@ int error;
 
         this.cookie = cookie;
         this.requestURL = requestURL;
-        thread = new Thread(this, "Поток для примера");
-error = 0;
+        thread = new Thread(this, "Поток>>");
+errors = 0;
         thread.start(); // Запускаем поток
 
         try {
@@ -92,8 +92,8 @@ error = 0;
         } catch (Exception e) {
             System.out.println("Ошибка запроса" + e.toString());
             e.printStackTrace();
-            if(error < 2) {
-                error++;
+            if(errors < 2) {
+                errors++;
                 requestGet(requestURL, cookie);
 
             }

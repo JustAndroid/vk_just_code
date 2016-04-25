@@ -148,7 +148,7 @@ Thread thread;
 
 
 				if(lastID != 0) {
-					APIFunctions.Wall.delete(Integer.parseInt(idPage), lastID, getApplicationContext());
+					APIFunctions.Wall.delete(Integer.parseInt(idPage), lastID);
 				}
 				if(jsonObject.has("response")) {
 				JSONObject respounsJsonObject = jsonObject.getJSONObject("response");

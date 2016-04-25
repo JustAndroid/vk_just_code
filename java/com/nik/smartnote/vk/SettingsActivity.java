@@ -36,10 +36,10 @@ import java.net.URLEncoder;
 public class SettingsActivity extends Activity {
     //писал на быструю руку, исправить и рефлакторить
     TextView statusTextView;
-   public final String PRIBIL = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=getAllBuildingsRewards&user=" + User.getInstance().getUser_id(SettingsActivity.this);
-   public final String SIGI = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&getidea=1&method=office&user=" + User.getInstance().getUser_id(SettingsActivity.this);
-   public final String TUALET = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=collectToiletPaper&user=" + User.getInstance().getUser_id(SettingsActivity.this);
-   public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key(SettingsActivity.this);
+   public final String PRIBIL = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=getAllBuildingsRewards&user=" + User.getInstance().getUser_id();
+   public final String SIGI = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&getidea=1&method=office&user=" + User.getInstance().getUser_id();
+   public final String TUALET = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=collectToiletPaper&user=" + User.getInstance().getUser_id();
+   public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id() + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key();
 
     ListView listView;
 
@@ -111,10 +111,10 @@ public class SettingsActivity extends Activity {
 
                                 break;
                             case 8:
-                                statusTextView.setText(HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=cardGamePlay", null));
+                                statusTextView.setText(HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id() + "&key=" + User.getInstance().getAuth_key() + "&method=cardGamePlay", null));
 
 
-                                statusTextView.append("\n" + HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=cardGameFinish", null));
+                                statusTextView.append("\n" + HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id() + "&key=" + User.getInstance().getAuth_key() + "&method=cardGameFinish", null));
                                 break;
                             case 9:
 
@@ -124,8 +124,8 @@ public class SettingsActivity extends Activity {
                             case 10:
                                 HTTPHelper.getInstance().requestGet(new PrissonManager().getBossInfo(SettingsActivity.this), null);
                               statusTextView.setText(HTTPHelper.getInstance().requestGet(
-                                      "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this)
-                                              + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&boss%5Fid="
+                                      "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key()
+                                              + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id() + "&boss%5Fid="
                                               + PrissonManager.BOSSES[0][0] + "&type=boss&guild%5Fmode=0&choice=p&mode=simple"
                                       , null
                               ));
@@ -140,8 +140,8 @@ public class SettingsActivity extends Activity {
                                 break;
                             case 13:
                                 statusTextView.setText(HTTPHelper.getInstance().requestGet(
-                                        "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this)
-                                                + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&boss%5Fid="
+                                        "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key()
+                                                + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id() + "&boss%5Fid="
                                                 + PrissonManager.BOSSES[0][0] + "&type=boss&guild%5Fmode=0&choice=p&mode=epic"
                                         , null
                                 ));
@@ -149,6 +149,14 @@ public class SettingsActivity extends Activity {
                             case 14 :
                                 taskManager = new TaskManager();
                                 taskManager.execute(TaskManager.CHISTKA);
+                                break;
+                            case 15 :
+                                taskManager = new TaskManager();
+                                taskManager.execute(TaskManager.NUCHKI);
+                                break;
+                            case 16 :
+                                taskManager = new TaskManager();
+                                taskManager.execute(TaskManager.HARCHKI_A);
                         }
 
                     }
@@ -166,7 +174,8 @@ public class SettingsActivity extends Activity {
         final public static int HARCHKI = 5;
         final public static int ATTAK = 6;
         final public static int CHISTKA = 7;
-
+        final public static int NUCHKI = 8;
+        final public static int HARCHKI_A = 9;
         JSONArray jsonArray;
 
 
@@ -177,7 +186,7 @@ public class SettingsActivity extends Activity {
             switch (id[0]) {
                 case DELETE_ALL_SEND_REQUESTS:
 
-                    String strJson = APIFunctions.Friends.getRequests(100, 1,SettingsActivity.this);
+                    String strJson = APIFunctions.Friends.getRequests(100, 1);
                     JSONArray jsonArray = JsonHelper.getInstanse().parse(strJson);
                     for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -188,7 +197,7 @@ public class SettingsActivity extends Activity {
                         }
 
                         try {
-                            APIFunctions.Friends.delete(Integer.parseInt(jsonArray.getString(i)),SettingsActivity.this);
+                            APIFunctions.Friends.delete(Integer.parseInt(jsonArray.getString(i)));
                             String text = jsonArray.getString(i);
                             publishProgress("Пытаемся удалить: " + jsonArray.getInt(i) + "\nНомер: " + (i+1) + " из " + jsonArray.length());
 
@@ -202,13 +211,13 @@ public class SettingsActivity extends Activity {
 
                 case ADD_ALL_FRIEND:
 
-                    JSONArray allFriendsArray = JsonHelper.getInstanse().parse(APIFunctions.Friends.getRequests(100, 0,SettingsActivity.this));
+                    JSONArray allFriendsArray = JsonHelper.getInstanse().parse(APIFunctions.Friends.getRequests(100, 0));
 
                     for (int i = 0; i < allFriendsArray.length(); i++) {
 
                         try {
                             System.out.println(allFriendsArray.getInt(i));
-                            APIFunctions.Friends.add(Integer.parseInt(allFriendsArray.getString(i)),SettingsActivity.this);
+                            APIFunctions.Friends.add(Integer.parseInt(allFriendsArray.getString(i)));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -219,7 +228,7 @@ public class SettingsActivity extends Activity {
                     break;
                 case FRIEND_BAKED:
                     try {
-                        String urlListId = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&method=votes.getLog";
+                        String urlListId = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&user=" + User.getInstance().getUser_id() + "&method=votes.getLog";
 
                         jsonArray = new JSONArray(HTTPHelper.getInstance().requestGet(urlListId, null));
 
@@ -229,8 +238,8 @@ public class SettingsActivity extends Activity {
                             System.out.println(jsonObject.getString("uid"));
                             HTTPHelper.getInstance().requestGet(
                                     "http://109.234.156.252/prison/universal.php?friend_uid=" + jsonObject.getString("uid")
-                                            + "&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&username=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9C" +
-                                            "%D0%B0%D1%85%D0%B0%D0%B5%D0%B2&method=voteForFriend&sex=0&vote=5&key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&model_id=1"
+                                            + "&user=" + User.getInstance().getUser_id() + "&username=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9C" +
+                                            "%D0%B0%D1%85%D0%B0%D0%B5%D0%B2&method=voteForFriend&sex=0&vote=5&key=" + User.getInstance().getAuth_key() + "&model_id=1"
                                     , null
                             );
                             publishProgress("Качаем номеру: " + i + " из " + jsonArray.length());
@@ -246,7 +255,7 @@ public class SettingsActivity extends Activity {
 
                 case ALL_FRIEND_BAKED:
                     try {
-                        String urlListId = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&user=" + User.getInstance().getUser_id(SettingsActivity.this) + "&method=votes.getLog";
+                        String urlListId = "http://109.234.156.252/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&user=" + User.getInstance().getUser_id() + "&method=votes.getLog";
 
 
                         JSONObject jsonObject;
@@ -260,9 +269,9 @@ public class SettingsActivity extends Activity {
 
                             HTTPHelper.getInstance().requestGet(
                                     "http://109.234.156.252/prison/universal.php?friend_uid=" + jsonObject.getString("uid")
-                                            + "&user=" + User.getInstance().getUser_id(SettingsActivity.this)
+                                            + "&user=" + User.getInstance().getUser_id()
                                             + "&username=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9%20%D0%9C" +
-                                            "%D0%B0%D1%85%D0%B0%D0%B5%D0%B2&method=voteForFriend&sex=0&vote=5&key=" + User.getInstance().getAuth_key(SettingsActivity.this)
+                                            "%D0%B0%D1%85%D0%B0%D0%B5%D0%B2&method=voteForFriend&sex=0&vote=5&key=" + User.getInstance().getAuth_key()
                                             + "&model_id=1", null);
                             publishProgress("Номер " + i + " из " + jsonArray.length());
                         }
@@ -279,7 +288,7 @@ public class SettingsActivity extends Activity {
 
 
                     try {
-                        String getInfo = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=getInfo&user=" + User.getInstance().getUser_id(SettingsActivity.this);
+                        String getInfo = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=getInfo&user=" + User.getInstance().getUser_id();
                         String namePlayer = new XMLParser().parsXMLTeg(new HTTPHelper().requestGet(getInfo, null), "name");
 
                         jsonArray = null;
@@ -290,8 +299,8 @@ public class SettingsActivity extends Activity {
                         for (int i = jsonArray.length() - 120; i < jsonArray.length(); i++) {
                             jsonObj = jsonArray.getJSONObject(i);
 
-                            HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&vote=1&friend%5Fuid=" + jsonObj.getString("uid")
-                                    + "&model%5Fid=1&method=voteForFriend&sex=0&username=" + URLEncoder.encode(namePlayer, "UTF-8") + "&user=" + User.getInstance().getUser_id(SettingsActivity.this), null);
+                            HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&vote=1&friend%5Fuid=" + jsonObj.getString("uid")
+                                    + "&model%5Fid=1&method=voteForFriend&sex=0&username=" + URLEncoder.encode(namePlayer, "UTF-8") + "&user=" + User.getInstance().getUser_id(), null);
                             System.out.println(i);
                             publishProgress("Бросаем дрожжи другу номер: " + j + " из 120ти");
                             j++;
@@ -305,12 +314,13 @@ public class SettingsActivity extends Activity {
                     }
                     publishProgress("Всё");
                     break;
+
                 case HARCHKI:
 
 
 
                     try {
-                        String getInfo = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&method=getInfo&user=" + User.getInstance().getUser_id(SettingsActivity.this);
+                        String getInfo = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=getInfo&user=" + User.getInstance().getUser_id();
                         String namePlayer = new XMLParser().parsXMLTeg(new HTTPHelper().requestGet(getInfo, null), "name");
 
                         jsonArray = null;
@@ -321,8 +331,8 @@ public class SettingsActivity extends Activity {
                         for (int i = jsonArray.length() - 120; i < jsonArray.length(); i++) {
                             jsonObj = jsonArray.getJSONObject(i);
 
-                            HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(SettingsActivity.this) + "&vote=2&friend%5Fuid=" + jsonObj.getString("uid")
-                                    + "&model%5Fid=1&method=voteForFriend&sex=0&username=" + URLEncoder.encode(namePlayer, "UTF-8") + "&user=" + User.getInstance().getUser_id(SettingsActivity.this), null);
+                            HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&vote=2&friend%5Fuid=" + jsonObj.getString("uid")
+                                    + "&model%5Fid=1&method=voteForFriend&sex=0&username=" + URLEncoder.encode(namePlayer, "UTF-8") + "&user=" + User.getInstance().getUser_id(), null);
                             System.out.println(i);
                             publishProgress("Плюем другу номер: " + j + " из 120ти");
                             j++;
@@ -359,7 +369,7 @@ public class SettingsActivity extends Activity {
                             int rating =  jsonObj.getInt("rating");
                             if(rating < 50000) {
 System.out.println("Удаляем" + jsonObj.getInt("uid") +"---"+ rating);
-                               APIFunctions.Friends.delete(jsonObj.getInt("uid"),SettingsActivity.this);
+                               APIFunctions.Friends.delete(jsonObj.getInt("uid"));
                             }
                             System.out.println(i);
                             publishProgress("Плюем другу номер: " + j + " из 120ти");
@@ -373,7 +383,61 @@ System.out.println("Удаляем" + jsonObj.getInt("uid") +"---"+ rating);
                     }
                     publishProgress("Всё");
                     break;
+
+                case NUCHKI :
+
+                        for (int i = 1; i < 90; i++) {
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?key="+User.getInstance().getAuth_key()+"&user="+User.getInstance().getUser_id()+"&friend=231417116&method=collectionsSendGiftToFriend&id=1&cid=10", null);
+
+                            System.out.println(i);
+                            publishProgress("бросаем нычку другу номер: " + i + " из 105");
+
+                        }
+
+                    publishProgress("Всё");
+                    break;
+
+                case HARCHKI_A:
+
+
+
+                    try {
+                        String getInfo = "http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=getInfo&user=" + User.getInstance().getUser_id();
+                        String namePlayer = new XMLParser().parsXMLTeg(new HTTPHelper().requestGet(getInfo, null), "name");
+
+                        jsonArray = null;
+                        jsonArray = new JSONArray(new HTTPHelper().requestGet("http://109.234.156.251/prison/universal.php?user=52601950&method=getFriendRatings&key=4c2db8519fb438aa015b67b706cbf29b&sig=1f0cc231518347f270364d6d034ce6ea", null));
+                        JSONObject jsonObj;
+                        int j = 1;
+                        System.out.println(jsonArray.optJSONObject(1));
+                        for (int i = jsonArray.length() - 120; i < jsonArray.length(); i++) {
+                            jsonObj = jsonArray.getJSONObject(i);
+
+                            HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&vote=2&friend%5Fuid=" + jsonObj.getString("uid")
+                                    + "&model%5Fid=1&method=voteForFriend&sex=0&username=" + URLEncoder.encode(namePlayer, "UTF-8") + "&user=" + User.getInstance().getUser_id(), null);
+                            System.out.println(i);
+                            publishProgress("Плюем другу номер: " + j + " из 120ти");
+                            j++;
+                        }
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    publishProgress("Всё");
+                    break;
+
             }
+
+
+
 
             return null;
         }

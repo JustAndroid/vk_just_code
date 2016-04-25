@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.nik.smartnote.vk.Model.User;
 import com.nik.smartnote.vk.adapter.MainMenuAdapter;
@@ -115,6 +116,8 @@ public class MainMenu extends Activity {
 
 
                         break;
+
+
                     case 2:
                         startActivity(new Intent(MainMenu.this, SettingsActivity.class));
                         break;
@@ -153,7 +156,7 @@ public class MainMenu extends Activity {
                 finish();
                 break;
             case R.id.about:
-                User.getInstance().clear(this);
+
                 startActivity(new Intent(MainMenu.this, DeveloperActivity.class));
 
         }

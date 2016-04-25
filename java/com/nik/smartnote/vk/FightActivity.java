@@ -145,7 +145,7 @@ public void refresh(View v) {
 
    public void onVPah(View v){
 
-        new PrissonManager().kickBoss(FightActivity.this, idBoss,7);
+        new PrissonManager().kickBoss(idBoss,7);
 
 
      }

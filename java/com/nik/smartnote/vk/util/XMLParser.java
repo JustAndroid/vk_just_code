@@ -11,7 +11,7 @@ import java.io.StringReader;
  * Created by Николай on 12.01.2016.
  */
 public class XMLParser {
-
+//todo переделать, что бы не ошибкой управлялось
     public String parsXMLTeg(String xml, String teg) {
 
 

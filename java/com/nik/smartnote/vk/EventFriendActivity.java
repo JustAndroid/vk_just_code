@@ -28,7 +28,7 @@ import org.json.JSONObject;
  */
 public class EventFriendActivity extends Activity {
 
-    public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id(EventFriendActivity.this) + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key(EventFriendActivity.this);
+    public final String allFriendsPlayPrison = "http://109.234.156.251/prison/universal.php?user=" + User.getInstance().getUser_id() + "&method=getFriendRatings&key=" + User.getInstance().getAuth_key();
 EditText editTextSum;
     TextView textViewAvtoritet;
     TextView textViewMoney;
@@ -111,7 +111,7 @@ attakButton = (ImageButton)findViewById(R.id.AttakButton);
                     jsonObj = jsonArray.getJSONObject(jsonArray.length()-5);
                     //берем 5 человека с конца для нападения
 
-                    HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?key="+User.getInstance().getAuth_key(EventFriendActivity.this)+"&method=challengeToDuel&user="+User.getInstance().getUser_id(EventFriendActivity.this)+"&enemy="+jsonObj.getString("uid"), null);
+                    HTTPHelper.getInstance().requestGet("http://109.234.156.251/prison/universal.php?key="+User.getInstance().getAuth_key()+"&method=challengeToDuel&user="+User.getInstance().getUser_id()+"&enemy="+jsonObj.getString("uid"), null);
                     System.out.println(i);
                     publishProgress("\nЛупашим кореша: " + i + " из "+ params[0]);
                     j++;

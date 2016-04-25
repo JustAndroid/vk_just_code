@@ -27,17 +27,17 @@ public class FriendsSettings {
 
 
 
-    public String deleteAllFriends(Context context) {
+    public String deleteAllFriends() {
 
 
-        String strJson = APIFunctions.Friends.getRequests(100, 1, context);
+        String strJson = APIFunctions.Friends.getRequests(100, 1);
         System.out.println("Вернулась строка Jsone " + strJson);
         JSONArray jsonArray = JsonHelper.getInstanse().parse(strJson);
         for (int i = 0; i < jsonArray.length(); i++) {
 
             String reply = null;
             try {
-                APIFunctions.Friends.delete(Integer.parseInt(jsonArray.getString(i)),context);
+                APIFunctions.Friends.delete(Integer.parseInt(jsonArray.getString(i)));
                 return "ПЫТАЕМСЯ УДАЛИТЬ" + jsonArray.getInt(i);
 
             } catch (JSONException e) {

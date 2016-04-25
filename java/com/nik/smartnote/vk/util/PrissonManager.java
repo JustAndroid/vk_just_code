@@ -36,10 +36,11 @@ public class PrissonManager {
             {10, R.string.borzov, R.drawable.borzov, R.string.xp_borzov},
             {43, R.string.ehan, R.drawable.ehan, R.string.xp_ehan},
             {26, R.string.konvoi, R.drawable.konvoi, R.string.xp_konvoi},
-            {15, R.string.dubel, R.drawable.dada_masha, R.string.xp_konvoi},
-
+            {15, R.string.krest, R.drawable.krest, R.string.xp_krest},
+            {31,}
 //52 старшой
 //19 бугор
+            //31 крест
             //50 змей
 
     };
@@ -60,25 +61,25 @@ public class PrissonManager {
 
 
    public String getBossInfo(Context context){
-        return HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key(context) + "&method=getBoss&user=" + User.getInstance().getUser_id(context), null);
+        return HTTPHelper.getInstance().requestGet("http://109.234.156.253/prison/universal.php?key=" + User.getInstance().getAuth_key() + "&method=getBoss&user=" + User.getInstance().getUser_id(), null);
     }
 
 
 
 
-   public void kickBoss(Context context, int id,int idWeapon){
+   public void kickBoss(int id,int idWeapon){
 
         HTTPHelper.getInstance().requestGet(
-                "http://109.234.156.252/prison/universal.php?method=hitBoss&spell_id="+idWeapon+"&key=" + User.getInstance().getAuth_key(context) + "&amount=1&boss_id="
-                        + id + "&user=" + User.getInstance().getUser_id(context),
+                "http://109.234.156.252/prison/universal.php?method=hitBoss&spell_id="+idWeapon+"&key=" + User.getInstance().getAuth_key() + "&amount=1&boss_id="
+                        + id + "&user=" + User.getInstance().getUser_id(),
                 null
         );
     }
 
     public int attackBoss(int id, String mode, Context context) {
         String rezult = HTTPHelper.getInstance().requestGet(
-                "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key(context)
-                        + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id(context) + "&boss%5Fid="
+                "http://109.234.156.250/prison/universal.php?key=" + User.getInstance().getAuth_key()
+                        + "&buff=0&method=startBattle&user=" + User.getInstance().getUser_id() + "&boss%5Fid="
                         + id + "&type=boss&guild%5Fmode=0&choice=p&mode=" + mode
                 , null
         );
@@ -112,12 +113,18 @@ public class PrissonManager {
 
     }
 
+ public int isAuthValide(int id, String authKey){
 
-public String getUserInfo(int id, Context context){
+
+
+     return 1;
+ }
+
+public String getUserInfo(int id){
 
     return HTTPHelper.getInstance().requestGet("http://109.234.156.250/prison/universal.php?key="
-            + User.getInstance().getAuth_key(context) + "&with_guild=1&user="
-            + User.getInstance().getUser_id(context) + "&method=getFriendModels&friend_uid=" + Integer.toString(id), null);
+            + User.getInstance().getAuth_key() + "&with_guild=1&user="
+            + User.getInstance().getUser_id() + "&method=getFriendModels&friend_uid=" + Integer.toString(id), null);
 }
 
 }
